@@ -1,0 +1,126 @@
+<style type="txt/css">
+
+@media only screen and (max-width: 767px) {
+  body {
+    /* The file size of this background image is 93% smaller
+       to improve page load speed on mobile internet connections */
+    background-image: url(captivebg-small.jpg);
+  }
+}
+	body {
+  /* Location of the image */
+  background-image: url(captivebg.jpg);
+  
+  /* Background image is centered vertically and horizontally at all times */
+  background-position: center center;
+  
+  /* Background image doesn't tile */
+  background-repeat: no-repeat;
+  
+  /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+  background-attachment: fixed;
+  
+  /* This is what makes the background image rescale based
+     on the container's size */
+  background-size: cover;
+  
+  /* Set a background color that will be displayed
+     while the background image is loading */
+  background-color: #464646;
+}
+
+form li {
+  list-style: none;
+  width: 100%;
+  font-weight: 500;
+  padding: 5px;
+  outline: none;
+  display: inline-block;
+  float: left;
+}
+ol,ul{list-style:none;margin:0px;padding:0px;}
+.submit{
+}
+
+body a,form li,.submit input[type="submit"]{
+  transition: 0.1s all;
+  -webkit-transition: 0.1s all;
+  -moz-transition: 0.1s all;
+  -o-transition: 0.1s all;
+}
+.submit input[type="submit"]{
+  font-size:20px;
+  font-weight: 400;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  padding:10px 10px;
+  width: 100%;
+  border: none;
+  transition: 0.1s all;
+  -webkit-transition: 0.1s all;
+  -moz-transition: 0.1s all;
+  -o-transition: 0.1s all;
+  background: #00bffe; 
+  border-bottom-right-radius: 0.44em;
+  -webkit-border-bottom-right-radius: 0.4em;
+  -o-border-bottom-right-radius: 0.4em;
+  -moz-border-bottom-right-radius: 0.4em;
+   border-bottom-left-radius: 0.4em;
+  -webkit-border-bottom-left-radius: 0.4em;
+  -o-border-bottom-left-radius: 0.4em;
+  -moz-border-bottom-left-radius: 0.4em;
+}
+input[type="submit"]:hover{
+  background:#ffa300;
+}
+
+input[type="text"], input[type="password"] {
+  width: 83%;
+  float: left;
+  color: #858282;
+  font-size: 15px;
+  outline: 1;
+  background: none;
+  font-weight: 500;
+  border: 1px;
+}
+
+.icon {
+ height: 20px;
+  width: 20px;
+  display: block;
+  float: left;
+  margin: 12px -28px 0px 0px;
+  border-right: 1px solid #999;
+  padding: 5px 16px 0 0;
+}
+.user {
+  background: url(./images/user.png) no-repeat 8px 2px ;
+}
+.lock {
+  background: url(./images/lock.png) no-repeat 8px 2px ;
+}
+.bacgroundwhite{
+  background-color: white;
+  padding: 10px;
+}
+.legendFiledset{
+  padding: 0.2em 0.5em;
+  border:1px solid green;
+  color: red;
+  font-style: bold;
+  background-color: yellow;
+}
+.formcontent {
+    display: block;
+    max-width:100%;
+    height:auto;
+     margin-left: 25%;
+    margin-right: 25%;
+    margin-top: 50px;
+    text-align: center;
+    }
+
+</style>

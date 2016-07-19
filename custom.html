@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Siloam Captive Portal - Facebook Login</title>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="$.CustomPath.$/responsive-full-background-image.css">
+<link rel="stylesheet" href="$.CustomPath.$/style-checkbox.css">
+<script src="$.CustomPath.$/jquery-3.0.0.min.js"></script>
+<script src="$.CustomPath.$/fblogin.js"></script>
+ </head>
+<body>
+
+
+<div class="formcontent">
+ <img src="$.CustomPath.$/logo.png" style="max-width:100%;height:auto;"/>
+ <form style="text-align:center" id="guestForm" method="post" action="/capture/handler.py/infopost">
+    <fieldset class="bacgroundwhite">
+
+        <legend class="legendFiledset">Siloam Internet Policy</legend>
+        
+          <textarea rows="10" cols="50" readonly="true" wrap class="styled">
+For security reason, every traffic going out to the world wide web is logged. Do not use the internet access to violate the law.
+Please authenticate using facebook, to continue...</textarea>
+           
+    
+<hr />
+<input id="agreechecked" type="hidden" name="agree" type="checkbox" value="agree" id="agree" class="" checked />
+ 
+  <div class="submit">
+  <input class="button" name="submit" id="submit" type="button" value="Step 1, Continue to FB Login" onclick="checkFacebookLogin();" />
+
+        <input name="submit2" id="submit2" type="submit" onclick="myFunction()" value="Step 2, Continue" style="display:none;" />
+      </div>
+        <h2 style="color:red;display:none;">$.ProblemText.$</h2>
+    </fieldset>
+  <input name="method" id="method" type="hidden" value="$.method.$"></input>
+<input name="nonce" id="nonce" type="hidden" value="$.nonce.$"></input>
+<input name="appid" id="appid" type="hidden" value="$.appid.$"></input>
+<input name="host" id="host" type="hidden" value="$.host.$"></input>
+ <input name="username" id="username" type="hidden" value="fb\username">
+ <input name="Username" id="Username" type="hidden" value="fb\username">
+        
+    <input name="uri" id="uri" type="hidden" value="$.uri.$"></input>
+
+
+</form>
+</div>
+
+
+</body>
+</html>
