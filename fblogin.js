@@ -6,6 +6,7 @@
 //Facebook App Access Need a valid domain
 var UntanglePublishDomain = "utmho.siloamhospitals.com";  //Please change this with yours
 var SpecificAPPID = '1068026436624490'; //Please change this with yours
+var appIDcaptive = 85; //please change it based on captive portal appID
 // END CONFIG
 
 
@@ -17,9 +18,12 @@ var originalPath = window.location.pathname;
 var query = window.location.search.substring(1);
 var newFULLURL = protokol+"//"+UntanglePublishDomain+originalPath+"?"+query;
 
+//THIS newFULLURL will be used as HTTP:referer, in Captive Rule By Pass, anything that has this referer will be passed.
+var newFULLURLWithoutQuery = protokol+"//"+UntanglePublishDomain+originalPath+"?appid="+appIDcaptive;
+
 //Redirect User if its not using a register valid domain
 if (originalURL != UntanglePublishDomain) {
-   window.location.href = newFULLURL; 
+   window.location.href = newFULLURLWithoutQuery; 
 }
   
 
@@ -36,38 +40,43 @@ console.log('Tombol  step 1 di tekan.... ');
 //console.log(response);
 
 FB.getLoginStatus(function(response) {
+console.log('in FB getLoginStatus function.... ');
+
      if (response.status === 'connected') {
           // Logged into your app and Facebook.
 
           //Display button to login to UTM  
           console.log('status response connected... ');
-         var submit2 = document.getElementById("submit2");
+          var submit2 = document.getElementById("submit2");
           var submit = document.getElementById("submit");
           
           console.log('tombol submit di hide... ');
           submit.style.display  = "none";
-             console.log('tombol step 2 di show... ');
+          console.log('tombol step 2 di show... ');
           submit2.style.display  = "inline";
 
 
           FB.api('/me?fields=name,email', function(response) {
-                console.log('Successful login for: ' + response.name);
-                 var username = document.getElementById("username"); 
-                 var Username = document.getElementById("Username"); 
+                  console.log('Successful login for: ' + response.name);
+                  
+                  //Update The FORM HIDDEN FIELD username with FB Name and Email,
+                  //So i hope it will not seen as anonymous
+                  var username = document.getElementById("username"); 
+                  var Username = document.getElementById("Username"); 
                   username.value='FB/'+response.name+';Email:'+response.email;
                   Username.value='FB/'+response.name+';Email:'+response.email;
               });
 
       } else if (response.status === 'not_authorized') {
 
-         
-         // The person is logged into Facebook, but not your app.
-         console.log('status response not_authorized... ');
-         //Show a button to trigger FB Authorize button
-         var submit2 = document.getElementById("submit2");
-            var submit = document.getElementById("submit");
-            submit2.style.display  = "none";
-            submit.style.display  = "inline";
+       
+          // The person is logged into Facebook, but not your app.
+          console.log('status response not_authorized... ');
+          //Show a button to trigger FB Authorize button
+          var submit2 = document.getElementById("submit2");
+          var submit = document.getElementById("submit");
+          submit2.style.display  = "none";
+          submit.style.display  = "inline";
 
       } else {
 
@@ -81,7 +90,7 @@ FB.getLoginStatus(function(response) {
           initiateFBLogin();
 
       }
-     });
+     }, true); // add additional true parameter.
 }
 
 function initiateFBLogin()
@@ -110,7 +119,7 @@ FB.login(function(response) {
     appId      : SpecificAPPID,  //Please change this to your appID
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
-    xfbml      : true,  // parse social plugins on this page
+    xfbml      : false,  // parse social plugins on this page
     version    : 'v2.5' // use graph api version 2.5
   });
 
@@ -148,29 +157,9 @@ FB.login(function(response) {
 //Below code, not Fucntional Yet
 //=======================
 
-//function to return user detail
-  function fetchUserDetail()
-    {
-        FB.api('/me?fields=name,email', function(response) {
-               
-                //alert("Name: "+ response.name + "\nResponse In Text: "+ JSON.stringify(response) + "\nEmail: "+ response.email + "ID: "+response.id);
-                //alert("Thank You");
-
-                //document.forms["guestForm"].submit();
-                //We got Name & Email
-                // response.name
-                // response.email
-
-            });
-
-
-         return response;
-    }
-
-  
   function updateUserStatus()
     {
-          var body = 'Reading JS SDK documentation';
+          var body = 'I am using Free Internet Access!';
           FB.api('/me/feed', 'post', { message: body }, function(response) {
             if (!response || response.error) {
               alert('Error occured');
