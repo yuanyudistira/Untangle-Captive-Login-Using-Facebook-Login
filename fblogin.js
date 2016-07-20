@@ -4,7 +4,7 @@
 
 // START CONFIG
 //Facebook App Access Need a valid domain
-var UntanglePublishDomain = "utmho.siloamhospitals.com";  //Please change this with yours
+var UntanglePublishDomain = "utmho.yourdomain.com";  //Please change this with yours
 var SpecificAPPID = '1068026436624490'; //Please change this with yours
 var appIDcaptive = 85; //please change it based on captive portal appID
 // END CONFIG
